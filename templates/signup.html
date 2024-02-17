@@ -16,6 +16,28 @@
 
     </form>
 
+    <div class="range">
+        <div class="sliderValue">
+          <span id="value">50</span>
+        </div>
+        <div class="field">
+          <div class="value left">0</div>
+            <input type="range" id="myRange" min="0" max="100" value="50" steps="1">
+          <div class="value right">100</div>
+        </div>
+    </div>
+    <script>
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("value");
+        output.innerHTML = slider.value; // Display the default slider value
+
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+            output.innerHTML = this.value;
+            output.style.left = (this.value) + "%";
+        }
+    </script>
+
     <small>Have an account? <a href="{{ url_for('login') }}"> Log in here </a></small>
 
 </body>
