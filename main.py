@@ -21,9 +21,17 @@ app.secret_key = 'secret'
 
 
 @app.route('/', methods=['POST', 'GET'])
+def home():
+    if 'user' in session:
+        return render_template('home.html')
+    return render_template('first_page.html')
+
+
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     if 'user' in session:
         return render_template('home.html')
+
     if request.method == 'POST':
         email = request.form.get('email')
         password = request.form.get('password')
