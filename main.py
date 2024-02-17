@@ -1,4 +1,4 @@
 word = "pycharm"
-word1 = "I love"
+word1 = "I hate"
 
 print(word1 + " " + word)
