@@ -21,7 +21,7 @@ app.secret_key = 'secret'
 
 
 @app.route('/', methods=['POST', 'GET'])
-def index():
+def login():
     if 'user' in session:
         return render_template('home.html')
     if request.method == 'POST':
@@ -34,6 +34,20 @@ def index():
         except:
             return render_template('login.html')
     return render_template('login.html')
+
+
+@app.route('/signup', methods=['POST', 'GET'])
+def signup():
+    if request.method == 'POST':
+        email = request.form.get('email')
+        password = request.form.get('password')
+        try:
+            user = auth.create_user_with_email_and_password(email, password)
+            session['user'] = email
+            return render_template('home.html')
+        except:
+            return render_template('signup.html')
+    return render_template('signup.html')
 
 
 @app.route('/logout')
