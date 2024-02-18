@@ -48,7 +48,7 @@ if current_wind_speed>wanted_wind_speed or current_wind_speed<wanted_wind_speed:
     index-=((abs(current_wind_speed-wanted_wind_speed)))
 
 if current_cloud_cover>wanted_cloud_cover or current_cloud_cover<wanted_cloud_cover:
-    index-=((abs(current_cloud_cover-wanted_cloud_cover))*0.1)
+    index-=((abs(current_cloud_cover-wanted_cloud_cover))/20)
 
 if current_visibility<wanted_visibility:
     index-=((abs(current_visibility-wanted_visibility)))
