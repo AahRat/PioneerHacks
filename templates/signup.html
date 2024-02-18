@@ -28,13 +28,15 @@ html,body{
 </head>
 
 <body>
+<span class="dot"></span>
+<span class="dot1"></span>
     <div class="banner">
         <form action="/signup" method="POST">
-            Email: <input type="text" name="email"><br><br>
-            Password: <input type="password" name="password"><br><br>
+            Email: <input type="text" name="email  "><br><br>
+            Password: <input type="password" name="password  "><br><br>
 
-            Pick your ideal precipitation level
-            <select name="precipitation">
+            Pick your ideal precipitation level:
+            <select name="precipitation" class="custom-select">
                 <option value="none">None</option>
                 <option value="low">Low</option>
                 <option value="moderate">Moderate</option>
@@ -110,7 +112,7 @@ html,body{
                     <div class="value right">20</div>
                 </div>
             </div><br>
-            <input type="submit">
+            <input type="submit" class="sbutton">
         </form>
 
         <small>Have an account? <a href="{{ url_for('login') }}"> Log in here </a></small><br>

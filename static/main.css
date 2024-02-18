@@ -7,10 +7,13 @@
 }
 html,body{
   display: grid;
+  margin: 20px;
   height: 100%;
   text-align: center;
+  color: #480355;
   place-items: center;
-  background: #664AFF;
+  background: #7699D4;
+  max-width: 100%;
 }
 .range{
     height: 80px;
@@ -85,3 +88,69 @@ html,body{
     border: 1px solid #664AFF;
     cursor: pointer;
 }
+
+.sbutton
+{
+  background-color: #480355;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px 14px;
+  cursor: pointer;
+}
+
+.sbutton:hover
+{
+  background-color: #9448BC;
+}
+
+.dot {
+  overflow: hidden;
+  width: 500px;
+  height: 500px;
+  background-color: #9448BC;
+  border-radius: 50%;
+  position: fixed;
+  top: -250px;
+  left: -250px;
+  box-shadow: 10px 10px #480355;
+}
+
+.dot1 {
+  overflow: hidden;
+  width: 500px;
+  height: 500px;
+  background-color: #9448BC;
+  border-radius: 50%;
+  position: fixed;
+  bottom: -250px;
+  right: -250px;
+  box-shadow: 10px 10px #480355 inset;
+}
+
+input[type=text] {
+  height: 30px;
+  width: 300px;
+  padding: 6px;
+  margin 20px 0px 0px 50px;
+  box-sizing: border-box;
+}
+
+input[type=password] {
+  height: 30px;
+  width: 300px;
+  padding: 6px;
+  margin 20px 0px 0px 50px;
+  box-sizing: border-box;
+}
+
+.custom-select {
+  position: relative;
+  width: 75px;
+  height: 45px;
+  background: #7699D4;
+  border-color: #480355;
+  border-width: 3px;
+}
+
