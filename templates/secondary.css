@@ -7,7 +7,7 @@
 }
 
 body{
-    background-image:url("HomePage_Background.jpg");
+    background-image:url("../HomePage_Background.jpg");
     height:100vh;
     display: flex;
     align-items: center;
