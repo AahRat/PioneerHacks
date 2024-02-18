@@ -33,7 +33,11 @@ def home():
     if 'user' in session:
         email = session.get('user')
         preferences = db.collection('Users').document(email).get().to_dict()
-        location = 'Sunnyvale'
+        if request.method == 'POST':
+            location = request.form.get('searchbar')
+        else:
+            location = 'Sunnyvale'
+
         real_weather = value_cleaner(location)
         index_number = weather_formula(preferences, real_weather)
         print(index_number)

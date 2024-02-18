@@ -27,9 +27,23 @@
 {
   background-color: #9448BC;
 }
+
+.search {
+    margin-left: 735px;
+    margin-top: 40px;
+}
+
+input {
+    padding: 14px;
+}
+
 </style>
 
 <body>
+  <form action="/" class="search" method="POST">
+      <input type="text" name="searchbar" placeholder="Enter location:">
+      <input type="submit" placeholder="Search">
+  </form>
 
   <div id="text">The current Nubis weather index for your preferences is </div> <br>
   <div id="numberContainer"></div>
