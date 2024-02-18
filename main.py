@@ -38,7 +38,7 @@ def home():
         index_number = weather_formula(preferences, real_weather)
         print(index_number)
         # index_number = 50
-        return render_template('homepageIndex.html', Index=index_number, Percentage=(490 - index_number*4.72), Time=(index_number*4.72)/5)
+        return render_template('homepageIndex.html', Index=index_number, Temperature=real_weather[0], Humidity=real_weather[1], Precipitation=real_weather[6], Wind=real_weather[3], CloudCover=real_weather[4], Visibility=real_weather[5])
     return render_template('first_page.html')
 
 
@@ -52,7 +52,7 @@ def login():
         real_weather = value_cleaner(location)
         index_number = weather_formula(preferences, real_weather)
         print(index_number)
-        return render_template('homepageIndex.html', Index=index_number)
+        return render_template('homepageIndex.html', Index=index_number, Temperature=real_weather[0], Humidity=real_weather[1], Precipitation=real_weather[6], Wind=real_weather[3], CloudCover=real_weather[4], Visibility=real_weather[5])
 
     if request.method == 'POST':
         email = request.form.get('email')
@@ -66,7 +66,10 @@ def login():
             real_weather = value_cleaner(location)
             index_number = weather_formula(preferences, real_weather)
             print(index_number)
-            return render_template('homepageIndex.html', Index=index_number)
+            return render_template('homepageIndex.html', Index=index_number, Temperature=real_weather[0],
+                                   Humidity=real_weather[1], Precipitation=real_weather[6], Wind=real_weather[3],
+                                   CloudCover=real_weather[4], Visibility=real_weather[5])
+
         except:
             return render_template('login.html')
     return render_template('login.html')
@@ -102,7 +105,10 @@ def signup():
             index_number = weather_formula(preferences, real_weather)
             print(index_number)
 
-            return render_template('homepageIndex.html', Index=index_number)
+            return render_template('homepageIndex.html', Index=index_number, Temperature=real_weather[0],
+                                   Humidity=real_weather[1], Precipitation=real_weather[6], Wind=real_weather[3],
+                                   CloudCover=real_weather[4], Visibility=real_weather[5])
+
         except:
             return render_template('signup.html')
     return render_template('signup.html')

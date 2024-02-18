@@ -4,25 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rectangle Box and 6 Equal Parts</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
+<style>
+.sbutton
+{
+  background-color: #480355;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px 14px;
+  cursor: pointer;
+  width: 75px;
+  text-align: center;
+  align-items: center;
+  margin-left: 790px;
+}
+
+.sbutton:hover
+{
+  background-color: #9448BC;
+}
+</style>
+
 <body>
-    <div class="container">
-        <div class="rectangle"></div>
-        <div class="remaining-space">
-            <div class="row">
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-            <div class="row">
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-            <div class="row">
-                <div class="box"></div>
-                <div class="box"></div>
-            </div>
-        </div>
-    </div>
+
+  <div id="text">The current Nubis weather index for your preferences is </div> <br>
+  <div id="numberContainer"></div>
+   <div class="description">
+       The current temperature is {{ Temperature }} degrees.
+  </div>
+  <div class="description1">
+       The current humidity is {{ Humidity }}%.
+  </div>
+  <div class="description1">
+       The current precipitation level is {{ Precipitation }}
+  </div>
+  <div class="description1">
+       The current wind speed is {{ Wind }} miles per hour
+  </div>
+  <div class="description1">
+       The cloud cover is {{ CloudCover }}%
+  </div>
+  <div class="description1">
+       The current visibility is {{ Visibility }} miles
+  </div> <br>
+  <a class="sbutton" href="{{ url_for('logout') }}" >Log Out</a> <br>
+<script>
+  function displayNumberWithAnimation() {
+    var indexNumber = {{ Index }};
+    var numberContainer = document.getElementById('numberContainer');
+
+    numberContainer.innerHTML = indexNumber;
+    numberContainer.style.opacity = 1;
+  }
+  window.onload = displayNumberWithAnimation;
+
+</script>
+
+
 </body>
 </html>

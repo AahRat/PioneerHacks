@@ -30,7 +30,15 @@ def value_cleaner(user_input):
         clouds = weather_data.json()['clouds']['all']
         vis = int(weather_data.json()['visibility'] / 1609.34)
 
-        return [temp, humidity, rain_level, wind_speed, clouds, vis]
+        rain_level_string = "none"
+        if rain_level == 1:
+            rain_level_string = "low"
+        elif rain_level == 2:
+            rain_level_string = "moderate"
+        elif rain_level == 3:
+            rain_level_string = "high"
+
+        return [temp, humidity, rain_level, wind_speed, clouds, vis, rain_level_string]
 
 # Current Temp: Degrees in F
 # Current Humidity: As is
