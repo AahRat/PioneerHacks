@@ -1,117 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{
-    margin:0;
-    padding:0;
-    font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
-.banner{
+html,body{
+  display: grid;
+  height: 100%;
+  text-align: center;
+  place-items: center;
+  background: #664AFF;
+}
+.range{
+    height: 80px;
+    width: 380px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 0 65px 0 45px;
+}
+.range .sliderValue{
+    position: relative;
     width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),url(background.jpg);
-    background-size: cover;
-    background-position: center;
 }
-
-.navbar{
-    width:85%;
-    margin: auto;
-    padding: 35px 0;
+.range .sliderValue span{
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    color: #fff;
+    font-weight: 500;
+    top: -40px;
+    transform: translateX(-50%);
+    line-height: 55px;
+    z-index: 2;
+}
+.range .sliderValue span:after{
+    position: absolute;
+    content: "";
+    height: 45px;
+    width: 45px;
+    background: #664AFF;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border: 3px solid #fff;
+    z-index: -1;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+.range .field{
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    height: 100%;
 }
-
-.logo{
-    width: 120px;
-    cursor: pointer;
-
-}
-
-.navbar ul li{
-    list-style:none;
-    display: inline-block;
-    margin: 0 20px;
-    position:relative;
-
-
-}
-
-.navbar ul li a{
-    text-decoration: none;
-    color: white;
-    text-transform: uppercase;
-}
-
-.navbar ul li::after{
-    content:'';
-    height:3px;
-    width:0;
-    background: #009688;
+.range .field .value{
     position: absolute;
-    left:0;
-    bottom:-10px;
-    transition: 0.5s;
-
+    font-size: 18px;
+    font-weight: 600;
+    color: #664AFF
 }
-
-.navbar ul li:hover::after{
-    width:70px;
+.range .field .value.left{
+    left: -22px;
 }
-
-.content{
-    width:100%;
-    position:absolute;
-    top:50%;
-    transform:translateY(-50%);
-    text-align:center;
-    color:#fff;
-
+.range .field .value.right{
+    right: -43px;
 }
-
-.content h1{
-    font-size:45px;
-    margin-top:80px;
-
+.range .field input{
+    -webkit-appearance: none;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
 }
-
-.content p{
-    margin: 20px auto;
-    font-weight:100;
-    line-height:25px;
-
-}
-
-button{
-    width:200px;
-    padding: 15px;
-    text-align: center;
-    margin: 20px 10px;
-    border-radius: 25px;
-    font-weight: bold;
-    border: 2px solid #009688;
-    background: transparent;
-    color: #fff;
+.range .field input::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: #664AFF;
+    border-radius: 50%;
+    border: 1px solid #664AFF;
     cursor: pointer;
-    position:relative;
-    overflow:hidden;
-
-}
-
-span{
-    background: #009688;
-    height:100%;
-    width:0;
-    border-radius: 25px;
-    position:absolute;
-    left:0;
-    bottom:0;
-    z-index:-1;
-    transition:0.5s;
-}
-
-button:hover span{
-    width:100%;
-}
-
-button:hover{
-    border:none
 }
