@@ -37,14 +37,22 @@ def home():
         real_weather = value_cleaner(location)
         index_number = weather_formula(preferences, real_weather)
         print(index_number)
-        return render_template('home.html')
+        # index_number = 50
+        return render_template('homepageIndex.html', Index=index_number, Percentage=(490 - index_number*4.72), Time=(index_number*4.72)/5)
     return render_template('first_page.html')
 
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
+    db = firestore.client()
     if 'user' in session:
-        return render_template('home.html')
+        email = session.get('user')
+        preferences = db.collection('Users').document(email).get().to_dict()
+        location = 'Sunnyvale'
+        real_weather = value_cleaner(location)
+        index_number = weather_formula(preferences, real_weather)
+        print(index_number)
+        return render_template('homepageIndex.html', Index=index_number)
 
     if request.method == 'POST':
         email = request.form.get('email')
@@ -52,7 +60,13 @@ def login():
         try:
             user = auth.sign_in_with_email_and_password(email, password)
             session['user'] = email
-            return render_template('home.html')
+
+            preferences = db.collection('Users').document(email).get().to_dict()
+            location = 'Sunnyvale'
+            real_weather = value_cleaner(location)
+            index_number = weather_formula(preferences, real_weather)
+            print(index_number)
+            return render_template('homepageIndex.html', Index=index_number)
         except:
             return render_template('login.html')
     return render_template('login.html')
@@ -81,7 +95,14 @@ def signup():
             }
             db.collection(u'Users').document(email).set(preferences)
             print("SET PREFERENCES")
-            return render_template('home.html')
+
+            preferences = db.collection('Users').document(email).get().to_dict()
+            location = 'Sunnyvale'
+            real_weather = value_cleaner(location)
+            index_number = weather_formula(preferences, real_weather)
+            print(index_number)
+
+            return render_template('homepageIndex.html', Index=index_number)
         except:
             return render_template('signup.html')
     return render_template('signup.html')

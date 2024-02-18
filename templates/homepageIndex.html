@@ -3,9 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
-    <link rel="stylesheet" href="secondary.css">
 
 </head>
+
+<style>
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Poppins", "sans-serif";
+
+}
+
+body{
+    background-image:url("../static/HomePage_Background.jpg");
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill{
+    width:160px;
+    height:160px;
+    /*background:cornflowerblue;*/
+    position:relative;
+}
+
+.outer{
+    height:160px;
+    width:160px;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15);
+    , -6px -6px 10px -1px rgba(255,255,255,0.7);
+}
+
+.inner{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+                inset -4px -4px 6px -1px rgba(255,255,255,0.7),
+                -0.5px -0.5px 0px rgba(255,255,255,1),
+                 0.5px  0.5px 0px rgba(0,0,0,0.15),
+                 0px  12px 10px -10px rgba(0,0,0,0.15);
+
+}
+
+#number{
+    font-weight: 600;
+    color: #555;
+
+}
+
+circle{
+    fill: none;
+    stroke:url(#GradientColor);
+    stroke-width: 20px;
+    stroke-dasharray:472;
+    stroke-dashoffset: 472;
+    animation: anim {{ Time/50 }}s linear forwards;
+
+
+}
+
+svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+
+}
+
+@keyframes anim{
+    100%{
+        stroke-dashoffset: {{ Percentage }};
+    }
+}
+
+</style>
+
 <body>
 <div class="skill">
     <div class="outer">
@@ -34,14 +114,14 @@
 let number= document.getElementById("number");
 let counter=0;
 setInterval(()=>{
-    if (counter==100){
+    if (counter == {{ Index }} ){
         clearInterval();
     }
     else{
         counter+=1;
-        number.innerHTML = counter+"%";
+        number.innerHTML = counter;
     }
-},25);
+},{{ Time }});
 
 </script>
 </body>
