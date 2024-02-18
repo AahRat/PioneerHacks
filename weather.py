@@ -1,4 +1,8 @@
+import requests
+
+
 def value_cleaner(user_input):
+    api_key = 'db9cc97063b16bb7bc515fa3f463e9d7'
     weather_data = requests.get(
         f"https://api.openweathermap.org/data/2.5/weather?q={user_input}&units=imperial&APPID={api_key}")
     print(weather_data.json())
@@ -26,8 +30,7 @@ def value_cleaner(user_input):
         clouds = weather_data.json()['clouds']['all']
         vis = int(weather_data.json()['visibility'] / 1609.34)
 
-        return temp, humidity, rain_level, wind_speed, clouds, vis
-
+        return [temp, humidity, rain_level, wind_speed, clouds, vis]
 
 # Current Temp: Degrees in F
 # Current Humidity: As is
@@ -41,12 +44,12 @@ def value_cleaner(user_input):
 # Current UV: maybe
 
 
-import requests
-
-api_key = 'db9cc97063b16bb7bc515fa3f463e9d7'
-
-user_input = input("Enter city: ")
-
-print(value_cleaner(user_input))
+# import requests
+#
+# api_key = 'db9cc97063b16bb7bc515fa3f463e9d7'
+#
+# user_input = input("Enter city: ")
+#
+# print(value_cleaner(user_input))
 # print(f"The weather in {user_input} is {weather} and {temp} degrees, but if feels like {feels_like}")
 # print(f"{user_input}'s rain level is {rain_level}")
